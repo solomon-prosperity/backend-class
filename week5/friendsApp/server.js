@@ -1,4 +1,6 @@
 const express = require('express')
+const dotenv = require('dotenv')
+dotenv.config()
 const app = express()
 const router = require('./src/router/friendsRouter')
 const hobbyRouter = require('./src/router/hobbyRouter')
@@ -15,10 +17,12 @@ app.get('/', sayHi, (req, res)=> {
     res.status(200).send(`Homepage`)
 })
 
-app.use('/data', router) // friends
+app.use('/friend', router) // friends
 app.use('/hobby', hobbyRouter) // hobby
 
-connectDb()
-app.listen(50000,() => {
-    console.log(`server is up and running on port 50000`)
+const port = process.env.PORT
+
+app.listen(port, async () => {
+    await connectDb()
+    console.log(`server is up and running on port ${port}`)
 })

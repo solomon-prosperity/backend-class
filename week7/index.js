@@ -12,7 +12,7 @@ multiple databases are known clusters
 Mongoose: Driver for mongoDB
 Mongodb compass 
 
-
+SCHEMA 
 
 
 
